@@ -1,24 +1,26 @@
-<mat-card class="login-card" appearance="outlined">
-    <mat-card-content>Inicio de sesión</mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-form-field>
-        <mat-label>Usuario</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide() ? 'password' : 'text'" />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="clickEvent($event)"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide()"
-        >
-          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
-    <a mat-flat-button href="https://www.google.com/" target="_blank">Acceder</a>
-    <a mat-button href="https://www.google.com/" target="_blank">¿Aún no te has registrado?</a>
-</mat-card>
+<div class="auth">
+    <mat-card class="login-card" appearance="outlined">
+        <mat-card-content>Inicio de sesión</mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <a mat-flat-button href="https://www.google.com/" target="_blank">Acceder</a>
+        <a mat-button href="https://www.google.com/" target="_blank">¿Aún no te has registrado?</a>
+    </mat-card>
+</div>
   
