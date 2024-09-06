@@ -1,1 +1,20 @@
-<p>task-management works!</p>
+<div class="task-management">
+    <mat-card class="tasks-card" appearance="outlined">
+        <mat-card-content class="tasks-card-content">
+            <strong>
+                <h1>{{ titleCard.toUpperCase() }}</h1>
+            </strong>
+            <div class="user-content">
+                <h3>Nombre del usuario</h3>
+                <div class="example-button-container">
+                    <button mat-fab extended>
+                        <mat-icon>logout</mat-icon>
+                        Cerrar sesión
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+    </mat-card>
+</div>
+  

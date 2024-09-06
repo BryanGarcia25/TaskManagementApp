@@ -1,0 +1,44 @@
+.task-management {
+    min-height: 100vh;
+    display: flex;
+}
+
+.task-management > * {
+    margin: auto;
+}
+
+.tasks-card {
+    justify-content: space-between;
+    width: 1380px;
+    height: 650px;
+    padding: 20px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.tasks-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.user-content > h3 {
+    font-weight: normal;
+}
+
+.example-button-container > button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 160px;
+}
