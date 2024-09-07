@@ -1,12 +1,18 @@
 import { Routes } from '@angular/router';
 import { TaskManagementComponent } from './features/task-management/task-management.component';
 import { AuthComponent } from './features/auth/auth.component';
+import { LoginComponent } from './features/auth/pages/login/login.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: AuthComponent,
-        title: 'Autenticación'
+        redirectTo: '/login',
+        pathMatch: 'full'
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+        title: 'Inicio de Sesión'
     },
     {
         path: 'main',
