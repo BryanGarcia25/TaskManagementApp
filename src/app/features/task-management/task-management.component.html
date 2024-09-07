@@ -24,9 +24,19 @@
                                 <div class="card-checkbox">
                                     <span>Completado!</span>
                                     <mat-checkbox class="example-margin"></mat-checkbox>
-                                    <button mat-fab>
+                                    <button mat-fab [matMenuTriggerFor]="menu" #menuTrigger>
                                         <mat-icon>menu</mat-icon>
                                     </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item>
+                                            <mat-icon>edit</mat-icon>
+                                            Editar
+                                        </button>
+                                        <button mat-menu-item>
+                                            <mat-icon>delete</mat-icon>
+                                            Eliminar
+                                        </button>
+                                    </mat-menu>
                                 </div>
                             </mat-card-content>
                     </mat-card>

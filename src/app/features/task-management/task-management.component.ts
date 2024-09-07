@@ -9,12 +9,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-task-management',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [RouterModule, MatCard, MatCardContent, MatIcon, MatDivider, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatButtonModule],
+  imports: [
+    RouterModule,
+    MatCard,
+    MatCardContent,
+    MatIcon,
+    MatDivider,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatMenuModule
+  ],
   templateUrl: './task-management.component.html',
   styleUrl: './task-management.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
