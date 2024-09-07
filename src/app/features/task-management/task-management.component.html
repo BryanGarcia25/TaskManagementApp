@@ -24,7 +24,7 @@
                                 <div class="card-checkbox">
                                     <span>Completado!</span>
                                     <mat-checkbox class="example-margin"></mat-checkbox>
-                                    <button mat-fab extended>
+                                    <button mat-fab>
                                         <mat-icon>menu</mat-icon>
                                     </button>
                                 </div>
@@ -34,7 +34,23 @@
             </div>
             <mat-divider vertical="true" style="height: 530px;"></mat-divider>
             <div class="form-task">
-                <h1>Formulario de tareas</h1>
+                <p>Nueva tarea</p>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nombre de la tarea</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Fecha a cumplir</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <button mat-fab extended>Agregar tarea</button>
             </div>
         </mat-card-content>
     </mat-card>
