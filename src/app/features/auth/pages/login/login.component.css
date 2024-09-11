@@ -13,3 +13,21 @@
     height: 400px;
     padding: 20px;
 }
+
+.login-card > a {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    background: #3657fb;
+    color: #ffffff;
+}
+
+.login-card > a:last-child {
+    background: none;
+    color: #000000;
+    text-decoration: none;
+}
+
+.login-card > a:last-child:hover {
+    text-decoration: underline;
+}
