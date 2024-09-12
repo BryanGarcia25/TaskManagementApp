@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { TaskManagementComponent } from './features/task-management/task-management.component';
 import { LoginComponent } from './features/auth/pages/login/login.component';
 import { RegisterComponent } from './features/auth/pages/register/register.component';
+import { TasksScreenComponent } from './features/tasks/pages/tasks-screen/tasks-screen.component';
 
 export const routes: Routes = [
     {
@@ -21,7 +21,7 @@ export const routes: Routes = [
     },
     {
         path: 'main',
-        component: TaskManagementComponent,
+        component: TasksScreenComponent,
         title: 'Task Management'
     }
 ];
