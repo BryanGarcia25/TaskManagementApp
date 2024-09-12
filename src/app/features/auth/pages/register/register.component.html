@@ -1,1 +1,30 @@
-<p>register works!</p>
+<div class="auth">
+    <mat-card class="register-card">
+        <mat-card-content>Registro de usuarios</mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+            <mat-label>Ingrese su nombre de usuario</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Ingrese su correo electrónico</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field hintLabel="Su contraseña debe tener una longitud minima de 8 carácteres">
+            <mat-label>Ingrese su contraseña</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" (input)="onInput($event)" />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-hint align="end">{{value().length}}/8</mat-hint>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <a mat-stroked-button routerLink="/main" routerLinkActive="router-link-active">Registrarse y acceder</a>
+    </mat-card>
+</div>

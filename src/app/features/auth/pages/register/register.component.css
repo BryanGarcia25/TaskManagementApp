@@ -1,0 +1,23 @@
+.auth {
+    min-height: 100vh;
+    display: flex;
+}
+
+.auth > * {
+    margin: auto;
+}
+
+.register-card {
+    justify-content: space-between;
+    width: 650px;
+    height: 400px;
+    padding: 20px;
+}
+
+.register-card > a {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    background: #3657fb;
+    color: #ffffff;
+}
