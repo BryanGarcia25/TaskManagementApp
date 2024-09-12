@@ -7,7 +7,7 @@
             <div class="user-content">
                 <h3>Nombre del usuario</h3>
                 <div class="example-button-container">
-                    <button mat-fab extended>
+                    <button mat-stroked-button extended>
                         <mat-icon>logout</mat-icon>
                         Cerrar sesión
                     </button>
@@ -24,7 +24,7 @@
                                 <div class="card-checkbox">
                                     <span>Completado!</span>
                                     <mat-checkbox class="example-margin"></mat-checkbox>
-                                    <button mat-fab [matMenuTriggerFor]="menu" #menuTrigger>
+                                    <button mat-stroked-button [matMenuTriggerFor]="menu" #menuTrigger>
                                         <mat-icon>menu</mat-icon>
                                     </button>
                                     <mat-menu #menu="matMenu">
@@ -60,7 +60,7 @@
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-                <button mat-fab extended>Agregar tarea</button>
+                <button mat-stroked-button extended>Agregar tarea</button>
             </div>
         </mat-card-content>
     </mat-card>
