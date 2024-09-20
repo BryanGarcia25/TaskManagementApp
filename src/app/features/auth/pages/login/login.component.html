@@ -2,24 +2,22 @@
     <mat-card class="login-card" appearance="outlined">
         <mat-card-content>Inicio de sesión</mat-card-content>
         <mat-divider></mat-divider>
-        <mat-form-field>
-            <mat-label>Usuario</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hide() ? 'password' : 'text'" />
-            <button
-              mat-icon-button
-              matSuffix
-              (click)="clickEvent($event)"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide()"
-            >
-              <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-        </mat-form-field>
-        <a mat-stroked-button routerLink="/main" routerLinkActive="router-link-active">Acceder</a>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()" class="login-form">
+            <mat-form-field>
+              <mat-label>Usuario</mat-label>
+              <input matInput formControlName="username">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password"/>
+                <button mat-icon-button matSuffix type="button" (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <button mat-stroked-button type="submit">Acceder</button>
+        </form>
         <a routerLink="/register">¿Aún no te has registrado?</a>
     </mat-card>
 </div>
