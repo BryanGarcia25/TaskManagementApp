@@ -14,7 +14,12 @@
     padding: 20px;
 }
 
-.login-card > a {
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form > button {
     text-align: center;
     width: 50%;
     margin: 0 auto;
@@ -22,12 +27,17 @@
     color: #ffffff;
 }
 
-.login-card > a:last-child {
+.login-card > a {
+    text-align: center;
+    margin: 0 auto;
     background: none;
     color: #000000;
+}
+
+.login-card > a {
     text-decoration: none;
 }
 
-.login-card > a:last-child:hover {
+.login-card > a:hover {
     text-decoration: underline;
 }
