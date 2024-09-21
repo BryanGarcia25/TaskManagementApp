@@ -17,30 +17,39 @@
         <mat-divider></mat-divider>
         <mat-card-content class="tasks">
             <div class="list-tasks">
-                @for (item of items; track $index) {
-                    <mat-card class="card" appearance="outlined">                    
-                            <mat-card-content class="card-content">
-                                Tarea {{ item }}
-                                <div class="card-checkbox">
-                                    <span>Completado!</span>
-                                    <mat-checkbox class="example-margin"></mat-checkbox>
-                                    <button mat-stroked-button [matMenuTriggerFor]="menu" #menuTrigger>
-                                        <mat-icon>menu</mat-icon>
+                <div *ngIf="taskList.length > 0; else noTasks">
+                    <mat-card class="card" appearance="outlined" *ngFor="let task of taskList; let i = index">
+                        <mat-card-content class="card-content">
+                            <div>
+                                <p>Tarea {{ i + 1 }}</p>
+                                <p>{{ task.title }}</p>
+                                <p>{{ task.description }}</p>
+                                <p>Fecha de vencimiento: {{ task.dueDate | date }}</p>
+                            </div>
+                            <div class="card-checkbox">
+                                <span>Completado!</span>
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                                <button mat-stroked-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                    <mat-icon>menu</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item>
+                                        <mat-icon>edit</mat-icon>
+                                        Editar
                                     </button>
-                                    <mat-menu #menu="matMenu">
-                                        <button mat-menu-item>
-                                            <mat-icon>edit</mat-icon>
-                                            Editar
-                                        </button>
-                                        <button mat-menu-item>
-                                            <mat-icon>delete</mat-icon>
-                                            Eliminar
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </mat-card-content>
+                                    <button mat-menu-item>
+                                        <mat-icon>delete</mat-icon>
+                                        Eliminar
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </mat-card-content>
                     </mat-card>
-                }
+                </div>
+                <ng-template #noTasks>
+                    <p>{{ taskList }}</p>
+                    <p>Sin tareas registradas</p>
+                </ng-template>
             </div>
             <mat-divider vertical="true" style="height: 530px;"></mat-divider>
             <div class="form-task">

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
@@ -11,12 +11,16 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthService } from '../../../auth/services/auth.service';
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../model/task.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tasks-screen',
   providers: [provideNativeDateAdapter()],
   standalone: true,
   imports: [
+    CommonModule,
     RouterModule,
     MatCard,
     MatCardContent,
@@ -33,11 +37,23 @@ import { AuthService } from '../../../auth/services/auth.service';
   styleUrl: './tasks-screen.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TasksScreenComponent {
+export class TasksScreenComponent implements OnInit {
   public titleCard: string = "Task Management";
-  items = [1,2,3,4,5]
+  taskList: Task[] = []
+  
+  constructor(private authService: AuthService, private taskService: TaskService, private router: Router, private cdr: ChangeDetectorRef) {}
 
-  constructor(private authService: AuthService, private router: Router) {}
+  ngOnInit(): void {
+    this.taskService.getAllTasks().subscribe({
+      next: (response) => {
+        this.taskList = response;
+        this.cdr.detectChanges()
+      },
+      error: (error) => {
+        console.error(`Error en el servidor ${error}`)
+      }
+    });
+  }
 
   logout() {
     this.authService.logout()
