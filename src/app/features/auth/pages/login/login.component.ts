@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response) => {
           localStorage.setItem('token', `Bearer ${response.token}`)
+          localStorage.setItem('username', this.loginForm.value['username'])
           this.router.navigate(['/main'])
         },
         error: (error) => {

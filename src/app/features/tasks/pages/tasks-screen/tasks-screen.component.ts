@@ -39,11 +39,13 @@ import { CommonModule } from '@angular/common';
 })
 export class TasksScreenComponent implements OnInit {
   public titleCard: string = "Task Management";
+  username: string | null = null;
   taskList: Task[] = []
   
   constructor(private authService: AuthService, private taskService: TaskService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('username')
     this.getAllTasks()
   }
 
