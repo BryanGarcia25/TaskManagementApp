@@ -36,7 +36,7 @@
                                         <mat-icon>edit</mat-icon>
                                         Editar
                                     </button>
-                                    <button mat-menu-item>
+                                    <button mat-menu-item (click)="deleteTask(task.id)">
                                         <mat-icon>delete</mat-icon>
                                         Eliminar
                                     </button>

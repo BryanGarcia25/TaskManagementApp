@@ -19,11 +19,15 @@ export class TaskService {
                     id: task._id,
                     title: task.title,
                     description: task.description,
-                    dueDate: new Date(task.dueDate),  // Si el campo es Date
+                    dueDate: new Date(task.dueDate),
                     completed: task.completed
                 }));
             })
         )
+    }
+
+    deleteTask(idTask: string) {
+        return this.http.delete<any>(`${this.apiTaskUrl}/deleteTask/${idTask}`, { headers: new HttpHeaders( { 'Authorization': `${localStorage.getItem('token')}` } ) });
     }
     
 }

@@ -59,4 +59,15 @@ export class TasksScreenComponent implements OnInit {
     this.authService.logout()
     this.router.navigate(['/login'])
   }
+
+  deleteTask(id: any) {
+    this.taskService.deleteTask(id).subscribe({
+      next: (response) => {
+        alert(response.message)
+      },
+      error: (error) => {
+        alert(error.message)
+      }
+    });
+  }
 }
