@@ -38,7 +38,7 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TasksScreenComponent implements OnInit {
-  public titleCard: string = "Task Management";
+  cardTitle: string = "Gestor de tareas";
   username: string | null = null;
   taskList: Task[] = []
   
