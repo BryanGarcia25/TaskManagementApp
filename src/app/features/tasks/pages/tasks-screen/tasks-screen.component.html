@@ -21,10 +21,9 @@
                     <mat-card class="card" appearance="outlined" *ngFor="let task of taskList; let i = index">
                         <mat-card-content class="card-content">
                             <div>
-                                <p>Tarea {{ i + 1 }}</p>
-                                <p>{{ task.title }}</p>
-                                <p>{{ task.description }}</p>
-                                <p>Fecha de vencimiento: {{ task.dueDate | date }}</p>
+                                <p><strong>Titulo:</strong> {{ task.title }}</p>
+                                <p><strong>Descripción:</strong> {{ task.description }}</p>
+                                <p><strong>Fecha de vencimiento:</strong> {{ task.dueDate | date }}</p>
                             </div>
                             <div class="card-checkbox">
                                 <span>Completado!</span>
