@@ -44,6 +44,15 @@ export class TasksScreenComponent implements OnInit {
   constructor(private authService: AuthService, private taskService: TaskService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    this.getAllTasks()
+  }
+
+  logout() {
+    this.authService.logout()
+    this.router.navigate(['/login'])
+  }
+
+  getAllTasks() {
     this.taskService.getAllTasks().subscribe({
       next: (response) => {
         this.taskList = response;
@@ -55,15 +64,11 @@ export class TasksScreenComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.authService.logout()
-    this.router.navigate(['/login'])
-  }
-
   deleteTask(id: any) {
     this.taskService.deleteTask(id).subscribe({
       next: (response) => {
         alert(response.message)
+        this.getAllTasks()
       },
       error: (error) => {
         alert(error.message)
