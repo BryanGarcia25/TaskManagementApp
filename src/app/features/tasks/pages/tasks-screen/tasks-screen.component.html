@@ -78,7 +78,7 @@
                         }
                     </mat-form-field>
 
-                    <button mat-stroked-button extended type="submit">Agregar tarea</button>
+                    <button mat-stroked-button extended type="submit">{{ taskForm.value['id'] === '' ? 'Agregar Tarea' : 'Editar Tarea' }}</button>
                 </form>
             </div>
         </mat-card-content>
