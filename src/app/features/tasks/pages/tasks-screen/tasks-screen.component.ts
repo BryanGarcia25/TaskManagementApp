@@ -43,7 +43,6 @@ export class TasksScreenComponent implements OnInit {
   cardTitle: string = "Gestor de tareas";
   username: string | null = null;
   taskList: Task[] = []
-
   taskForm!: FormGroup;
   
   constructor(private authService: AuthService, private taskService: TaskService, private router: Router, private cdr: ChangeDetectorRef, private formBuilder: FormBuilder) {}
@@ -95,6 +94,18 @@ export class TasksScreenComponent implements OnInit {
     });
   }
 
+  getTaskById(idTask: any) {
+    this.taskService.getTaskById(idTask).subscribe({
+      next: (response: Task) => {
+        this.taskForm.patchValue({
+          title: response.title,
+          description: response.description,
+          dueDate: response.dueDate
+        })
+      }
+    })
+  }
+  
   deleteTask(id: any) {
     this.taskService.deleteTask(id).subscribe({
       next: (response) => {
