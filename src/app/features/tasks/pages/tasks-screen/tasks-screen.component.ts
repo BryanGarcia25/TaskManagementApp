@@ -65,12 +65,9 @@ export class TasksScreenComponent implements OnInit {
 
   sendTaskForm() {
     if (this.taskForm.valid) {
-      console.log(this.taskForm);
       const taskValues = this.taskForm.value as Task;
       this.taskService.createTask(taskValues).subscribe({
         next: (response) => {
-          console.log(response);
-          
           alert(response.message)
           this.getAllTasks()
         },
@@ -78,7 +75,7 @@ export class TasksScreenComponent implements OnInit {
           console.log(error);
           alert(error.message)
         }
-      })
+      }) 
     }
   }
 
@@ -98,6 +95,7 @@ export class TasksScreenComponent implements OnInit {
     this.taskService.getTaskById(idTask).subscribe({
       next: (response: Task) => {
         this.taskForm.patchValue({
+          id: response._id,
           title: response.title,
           description: response.description,
           dueDate: response.dueDate
@@ -105,7 +103,7 @@ export class TasksScreenComponent implements OnInit {
       }
     })
   }
-  
+
   deleteTask(id: any) {
     this.taskService.deleteTask(id).subscribe({
       next: (response) => {

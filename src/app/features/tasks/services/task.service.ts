@@ -20,7 +20,7 @@ export class TaskService {
         return this.http.get<any[]>(`${this.apiTaskUrl}/tasks`, {headers: new HttpHeaders({'Authorization': `${localStorage.getItem('token')?.toString()}`})}).pipe(
             map((response: any[]) => {
                 return response.map(task => ({
-                    id: task._id,
+                    _id: task._id,
                     title: task.title,
                     description: task.description,
                     dueDate: new Date(task.dueDate),
@@ -32,6 +32,10 @@ export class TaskService {
 
     getTaskById(idTask: string) {
         return this.http.get<Task>(`${this.apiTaskUrl}/task/${idTask}`, { headers: new HttpHeaders( { 'Authorization': `${localStorage.getItem('token')}` }) })
+    }
+
+    editTaskById(idTask: string, taskForm: any) {
+        return this.http.put<any>(`${this.apiTaskUrl}/updateTask/${idTask}`, taskForm, { headers: new HttpHeaders({ 'Authorization': `${localStorage.getItem('token')}` }) })
     }
 
     deleteTask(idTask: string) {

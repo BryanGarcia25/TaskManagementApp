@@ -32,11 +32,11 @@
                                     <mat-icon>menu</mat-icon>
                                 </button>
                                 <mat-menu #menu="matMenu">
-                                    <button mat-menu-item (click)="getTaskById(task.id)">
+                                    <button mat-menu-item (click)="getTaskById(task._id)">
                                         <mat-icon>edit</mat-icon>
                                         Editar
                                     </button>
-                                    <button mat-menu-item (click)="deleteTask(task.id)">
+                                    <button mat-menu-item (click)="deleteTask(task._id)">
                                         <mat-icon>delete</mat-icon>
                                         Eliminar
                                     </button>
