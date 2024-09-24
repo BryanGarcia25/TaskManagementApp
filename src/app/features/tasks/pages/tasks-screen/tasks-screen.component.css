@@ -28,12 +28,13 @@
 .user-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
     width: 350px;
 }
 
 .user-content > h3 {
     font-weight: normal;
+    margin-right: 10px;
 }
 
 .example-button-container > button {
@@ -85,19 +86,19 @@
     margin: 0 auto;
 }
 
-.form-task {
+.task-section {
     width: 30%;
+    padding-left: 40px;
+}
+
+.form-task {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .form-task > button {
+    margin: 20px auto;
+    width: 50%;
     color: white;
     background: #3657fb;
 }
-
-.example-full-width {
-    width: 80%;
-}
-

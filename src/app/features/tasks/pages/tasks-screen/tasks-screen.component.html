@@ -51,9 +51,9 @@
                 </ng-template>
             </div>
             <mat-divider vertical="true" style="height: 530px;"></mat-divider>
-            <div class="form-task">
+            <div class="task-section">
                 <p>Nueva tarea</p>
-                <form [formGroup]="taskForm" (ngSubmit)="sendTaskForm()">
+                <form [formGroup]="taskForm" (ngSubmit)="sendTaskForm()" class="form-task">
                     <mat-form-field class="example-full-width">
                         <mat-label>Nombre de la tarea</mat-label>
                         <input matInput formControlName="title">
