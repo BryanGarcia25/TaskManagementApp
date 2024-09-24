@@ -14,6 +14,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../model/task.model';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tasks-screen',
@@ -31,7 +32,8 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatDatepickerModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    ReactiveFormsModule
   ],
   templateUrl: './tasks-screen.component.html',
   styleUrl: './tasks-screen.component.css',
@@ -41,10 +43,18 @@ export class TasksScreenComponent implements OnInit {
   cardTitle: string = "Gestor de tareas";
   username: string | null = null;
   taskList: Task[] = []
+
+  taskForm!: FormGroup;
   
-  constructor(private authService: AuthService, private taskService: TaskService, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private authService: AuthService, private taskService: TaskService, private router: Router, private cdr: ChangeDetectorRef, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.taskForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      description: [''],
+      dueDate: ['', Validators.required],
+    });
+
     this.username = localStorage.getItem('username')
     this.getAllTasks()
   }
@@ -52,6 +62,25 @@ export class TasksScreenComponent implements OnInit {
   logout() {
     this.authService.logout()
     this.router.navigate(['/login'])
+  }
+
+  sendTaskForm() {
+    if (this.taskForm.valid) {
+      console.log(this.taskForm);
+      const taskValues = this.taskForm.value as Task;
+      this.taskService.createTask(taskValues).subscribe({
+        next: (response) => {
+          console.log(response);
+          
+          alert(response.message)
+          this.getAllTasks()
+        },
+        error: (error) => {
+          console.log(error);
+          alert(error.message)
+        }
+      })
+    }
   }
 
   getAllTasks() {

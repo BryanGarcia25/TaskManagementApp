@@ -12,6 +12,10 @@ export class TaskService {
 
     constructor(private http: HttpClient) { }
 
+    createTask(taskData: any) {
+        return this.http.post<any>(`${this.apiTaskUrl}/createTask`, taskData, { headers: new HttpHeaders({ 'Authorization': `${localStorage.getItem('token')}` }) })
+    }
+
     getAllTasks(): Observable<Task[]> {
         return this.http.get<any[]>(`${this.apiTaskUrl}/tasks`, {headers: new HttpHeaders({'Authorization': `${localStorage.getItem('token')?.toString()}`})}).pipe(
             map((response: any[]) => {

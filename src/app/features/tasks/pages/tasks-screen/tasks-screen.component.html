@@ -53,22 +53,33 @@
             <mat-divider vertical="true" style="height: 530px;"></mat-divider>
             <div class="form-task">
                 <p>Nueva tarea</p>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Nombre de la tarea</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Descripción</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Fecha a cumplir</mat-label>
-                    <input matInput [matDatepicker]="picker">
-                    <mat-hint>DD/MM/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-                <button mat-stroked-button extended>Agregar tarea</button>
+                <form [formGroup]="taskForm" (ngSubmit)="sendTaskForm()">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre de la tarea</mat-label>
+                        <input matInput formControlName="title">
+                        @if (taskForm.get('title')?.invalid && taskForm.get('title')?.touched) {
+                            <mat-error>El nombre de la tarea es obligatoria</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Descripción</mat-label>
+                        <input matInput formControlName="description">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Fecha a cumplir</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dueDate">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        @if (taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched) {
+                            <mat-error>La fecha es obligatoria</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <button mat-stroked-button extended type="submit">Agregar tarea</button>
+                </form>
             </div>
         </mat-card-content>
     </mat-card>
