@@ -49,6 +49,7 @@ export class TasksScreenComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskForm = this.formBuilder.group({
+      id: [''],
       title: ['', Validators.required],
       description: [''],
       dueDate: ['', Validators.required],
@@ -66,16 +67,29 @@ export class TasksScreenComponent implements OnInit {
   sendTaskForm() {
     if (this.taskForm.valid) {
       const taskValues = this.taskForm.value as Task;
-      this.taskService.createTask(taskValues).subscribe({
-        next: (response) => {
-          alert(response.message)
-          this.getAllTasks()
-        },
-        error: (error) => {
-          console.log(error);
-          alert(error.message)
-        }
-      }) 
+      if (this.taskForm.value['id'] === '') {
+        this.taskService.createTask(taskValues).subscribe({
+          next: (response) => {
+            alert(response.message)
+            this.getAllTasks()
+          },
+          error: (error) => {
+            console.log(error);
+            alert(error.message)
+          }
+        }) 
+      } else {
+        this.taskService.editTaskById(this.taskForm.value['id'], taskValues).subscribe({
+          next: (response) => {
+            alert(response.message)
+            this.getAllTasks()
+          },
+          error: (error) => {
+            console.log(error);
+            alert(error.message)
+          }
+        }) 
+      }
     }
   }
 
