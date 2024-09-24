@@ -30,6 +30,10 @@ export class TaskService {
         )
     }
 
+    getTaskById(idTask: string) {
+        return this.http.get<Task>(`${this.apiTaskUrl}/task/${idTask}`, { headers: new HttpHeaders( { 'Authorization': `${localStorage.getItem('token')}` }) })
+    }
+
     deleteTask(idTask: string) {
         return this.http.delete<any>(`${this.apiTaskUrl}/deleteTask/${idTask}`, { headers: new HttpHeaders( { 'Authorization': `${localStorage.getItem('token')}` } ) });
     }
