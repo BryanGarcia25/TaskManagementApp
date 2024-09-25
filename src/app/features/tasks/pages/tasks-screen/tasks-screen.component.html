@@ -26,8 +26,7 @@
                                 <p><strong>Fecha de vencimiento:</strong> {{ task.dueDate | date }}</p>
                             </div>
                             <div class="card-checkbox">
-                                <span>Completado!</span>
-                                <mat-checkbox class="example-margin"></mat-checkbox>
+                                <span>{{ task.completed === false ? 'No completado' : 'Completado' }}</span>
                                 <button mat-stroked-button [matMenuTriggerFor]="menu" #menuTrigger>
                                     <mat-icon>menu</mat-icon>
                                 </button>
@@ -78,6 +77,8 @@
                         }
                     </mat-form-field>
 
+                    <mat-checkbox class="checkbox mat-primary" formControlName="completed">Completado</mat-checkbox>
+                    
                     <button mat-stroked-button extended type="submit">{{ taskForm.value['id'] === '' ? 'Agregar Tarea' : 'Editar Tarea' }}</button>
                 </form>
             </div>
