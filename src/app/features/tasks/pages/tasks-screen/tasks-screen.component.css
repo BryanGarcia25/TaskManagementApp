@@ -78,6 +78,10 @@
     justify-content: center;
 }
 
+.card-checkbox > .status {
+    margin-right: 20px;
+}
+
 .card-checkbox > button {
     color: white;
     background: #3657fb;
