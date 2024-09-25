@@ -53,6 +53,7 @@ export class TasksScreenComponent implements OnInit {
       title: ['', Validators.required],
       description: [''],
       dueDate: ['', Validators.required],
+      completed: [false]
     });
 
     this.username = localStorage.getItem('username')
@@ -85,7 +86,6 @@ export class TasksScreenComponent implements OnInit {
             this.getAllTasks()
           },
           error: (error) => {
-            console.log(error);
             alert(error.message)
           }
         }) 
@@ -112,7 +112,8 @@ export class TasksScreenComponent implements OnInit {
           id: response._id,
           title: response.title,
           description: response.description,
-          dueDate: response.dueDate
+          dueDate: response.dueDate,
+          completed: response.completed
         })
       }
     })
